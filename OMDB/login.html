@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login page</title>
+    <style>
+      div {
+        text-align: center;
+        width: 700px;
+        margin: auto;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      form > input {
+        width: 350px;
+        margin-top: 5px;
+        height: 20px;
+      }
+
+      form > button {
+        width: 350px;
+        margin-top: 15px;
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Login</h1>
+
+      <form id="login_form">
+        <input type="text" name="email" placeholder="Email" />
+        <input type="text" name="password" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <script>
+      let loginFrom = document.getElementById("login_form");
+      loginFrom.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let email = loginFrom.querySelector('[name="email"]').value;
+        let password = loginFrom.querySelector('[name="password"]').value;
+        // console.log(email,password);
+        let storedEmail = localStorage.getItem("Email");
+        let storedPassword = localStorage.getItem("Password");
+        // console.log(storedEmail, storedPassword);
+        if(email==storedEmail && password==storedPassword){
+            window.location.href='adminhome.html';
+        }
+        else if(email!=storedEmail){
+            alert("User not found");
+        }
+        else if(password!=storedPassword){
+            alert("Incorrect password");
+        }
+      });
+    </script>
+  </body>
+</html>

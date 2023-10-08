@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin page</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      #first {
+        margin-left: 20px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(60, 55, 55);
+        display: inline-flex;
+        border-radius: 5px;
+        margin-bottom: 0px;
+      }
+      #first > img {
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+      }
+      #first > div {
+        margin-top: 10px;
+        margin-left: 50%;
+        border-radius: 20%;
+      }
+
+      #first > div > input {
+        border-radius: 4px;
+        margin-right: 20px;
+      }
+      button {
+        background-color: skyblue;
+        border: none;
+        border-radius: 2px;
+        font-size: small;
+        margin-left: 20px;
+      }
+      #second {
+        margin-left: 20px;
+        margin-top: -5px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(88, 85, 85);
+        display: inline-flex;
+        border-radius: 5px;
+      }
+      nav {
+        margin-left: 20px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(105, 102, 102);
+        font-size: 10px;
+        color: white;
+        font-weight: bolder;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border-radius: 5px;
+        margin-top: -4px;
+      }
+      nav > a {
+        padding-top: 14px;
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        color: skyblue;
+        background-color: teal;
+      }
+      button > a {
+        text-decoration: none;
+        color: black;
+      }
+      #container {
+        margin: 50px;
+        color: white;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-around;
+        font-size: small;
+        
+        
+      }
+      #container>div{
+        width: 150px;
+        height: 210px;
+        margin-right: 50px;
+        color: white;
+        font-size: small;
+        text-align: center;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      .poster{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width:150px;
+        height:150px;
+        border: 2px solid teal;
+      }
+      .title{
+        margin-top: 3px;
+        margin-bottom: 0px;
+      }
+      .year{
+        color:green;
+        margin-top: 2px;
+        margin-bottom: 0px;
+      }
+      .id{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-bottom: 0px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="home_page">
+      <div id="first">
+        <img
+          src="https://i0.wp.com/apkinat.net/wp-content/uploads/2023/07/Movies4u.webp"
+          alt=""
+        />
+        <div>
+          <input id="searchBox" placeholder="Search Movies" />
+          <button onclick="showMovies()">Search</button>
+          <button><a href="home.html">Logout</a></button>
+        </div>
+      </div>
+      <nav>
+        <a href="">HOME</a>
+        <a href="">MOVIES</a>
+        <a href="">GENER</a>
+        <a href="">YEAR</a>
+        <a href="">OTT</a>
+        <a href="">WEB SERIES</a>
+        <a href="">SERIES GENER</a>
+      </nav>
+    </div>
+    <div id="container"></div>
+  </body>
+  <script>
+    let showMovies = async () => {
+      try {
+        let query = document.getElementById("searchBox").value;
+        let url = `http://www.omdbapi.com/?i=tt3896198&apikey=ed0052fa&s=${query}`;
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data.Search);
+        showData(data.Search);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    function showData(data) {
+      console.log(data);
+      let container = document.getElementById("container");
+      container.innerHTML = null;
+      if (data != undefined) {
+        data.forEach(function (el) {
+          let div = document.createElement("div");
+          let poster = document.createElement("img");
+          poster.className="poster";
+          poster.src = el.Poster;
+          let title = document.createElement("h5");
+          title.className="title";
+          title.innerText = el.Title;
+          let year=document.createElement("p");
+          year.className="year";
+          year.innerText=el.Year;
+          let imdbID =document.createElement("p");
+          imdbID.className="id";
+          imdbID.innerText=el.imdbID;
+          
+
+          div.append(poster,title,year,imdbID);
+          container.append(div);
+        });
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <style>
+      #first {
+        margin-left: 20px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(60, 55, 55);
+        display: inline-flex;
+        border-radius: 5px;
+        margin-bottom: 0px;
+      }
+      #first > img {
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+      }
+      #first > div {
+        margin-top: 10px;
+        margin-left: 50%;
+        border-radius: 20%;
+      }
+
+      #first > div > input {
+        border-radius: 4px;
+        margin-right: 20px;
+      }
+      button {
+        background-color: skyblue;
+        border: none;
+        border-radius: 2px;
+        font-size: small;
+        margin-left: 20px;
+      }
+      #second {
+        margin-left: 20px;
+        margin-top: -5px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(88, 85, 85);
+        display: inline-flex;
+        border-radius: 5px;
+      }
+      nav {
+        margin-left: 20px;
+        width: 95%;
+        height: 40px;
+        background-color: rgb(105, 102, 102);
+        font-size: 10px;
+        color: white;
+        font-weight: bolder;
+        display:flex;
+        flex-wrap: wrap;   
+        justify-content: space-around;
+        border-radius: 5px;
+        margin-top: -4px; 
+      }
+      nav>a{
+        padding-top: 14px;
+        text-decoration: none;
+        color: white;
+        
+      }
+      a:hover{
+      color: skyblue;
+      background-color: teal;
+      }
+     button>a{
+      text-decoration: none;
+      color: black;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="home_page">
+      <div id="first">
+        <img
+          src="https://i0.wp.com/apkinat.net/wp-content/uploads/2023/07/Movies4u.webp"
+          alt=""
+        />
+        <div>
+          <input type="search" placeholder="Search Movies" />
+          <button id="sign_up"><a href="signup.html">Sign up</a></button>
+          <button id="login"><a href="login.html">Login</a></button>
+        </div>
+      </div>
+      <nav>
+        <a href="home.html">HOME</a>
+        <a href="">MOVIES</a>
+        <a href="">GENER</a>
+        <a href="">YEAR</a>
+        <a href="">OTT</a>
+        <a href="">WEB SERIES</a>
+        <a href="">SERIES GENER</a>
+      </nav>
+    </div>
+  </body>
+  <script>
+    alert("Please login to use the web site")
+    document.getElementById("sign-up")
+  </script>
+</html>
